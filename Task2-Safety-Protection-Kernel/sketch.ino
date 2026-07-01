@@ -7,8 +7,10 @@ float packTotal;
 float packAverage;
 float imbalance;
 float minV, maxV;
+float prevVoltage[4] = {0, 0, 0, 0};
 int weakestCell, strongestCell;
 const char* healthState;
+bool lastBuzzerState = false;;
 
 unsigned long lastReport = 0;
 const unsigned long reportInterval = 1000;
@@ -49,6 +51,37 @@ void classifyHealth() {
   }
 }
 
+void checkRelay() {
+  if (minV < 2.8 || maxV > 4.2) {
+    digitalWrite(relayPin, LOW);
+    digitalWrite(buzzerPin, HIGH);
+    if (!lastBuzzerState) {
+      if (minV < 2.8) Serial.println("BUZZER: ON (LOW VOLTAGE!)");
+      if (maxV > 4.2) Serial.println("BUZZER: ON (OVERVOLTAGE!)");
+      lastBuzzerState = true;
+    }
+  } else if (minV > 3.0&& maxV <= 4.2) {
+    digitalWrite(relayPin, HIGH);
+    digitalWrite(buzzerPin, LOW);
+    if (lastBuzzerState) {
+      Serial.println("BUZZER: OFF (Safe)");
+      lastBuzzerState = false;
+    }
+  }
+}
+
+void checkFluctuation() {
+  for (int i = 0; i < 4; i++) {
+    float change = abs(cellVoltage[i] - prevVoltage[i]);
+    if (change > 0.5) {
+      Serial.print("Cell ");
+      Serial.print(i + 1);
+      Serial.println(" in Danger - High Fluctuation!");
+    }
+    prevVoltage[i] = cellVoltage[i];
+  }
+}
+
 void printReport() {
   Serial.println("=||=||= Battery Report =||=||=");
   for (int i = 0; i < 4; i++) {
@@ -72,22 +105,13 @@ void printReport() {
   Serial.println();
 }
 
-void checkRelay() {
-  if (minV < 2.8) {
-    digitalWrite(relayPin, LOW);
-    digitalWrite(buzzerPin, HIGH);
-    Serial.println("BUZZER: ON (LOW VOLTAGE!)");
-  } else if (minV > 3.0) {
-    digitalWrite(relayPin, HIGH);
-    digitalWrite(buzzerPin, LOW);
-    Serial.println("BUZZER: OFF (Safe)");
-  }
-}
-
 void setup() {
   Serial.begin(9600);
   pinMode(relayPin, OUTPUT);
   pinMode(buzzerPin, OUTPUT);
+  for (int i = 0; i < 4; i++) {
+    prevVoltage[i] = (analogRead(cellPins[i]) / 4095.0) * 4.2;
+  }
 }
 
 void loop() {
@@ -95,7 +119,7 @@ void loop() {
   calculateStats();
   classifyHealth();
   checkRelay();
-
+  checkFluctuation();
   unsigned long now = millis();
   if (now - lastReport >= reportInterval) {
     lastReport = now;
