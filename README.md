@@ -4,7 +4,7 @@
 Wokwi Simulation: https://wokwi.com/projects/467859014064321537
 
 ## Task 2 - Safety Protection Kernel
-Wokwi Simulation: (add after completion)
+Wokwi Simulation: https://wokwi.com/projects/468218958355116033
 
 ## Task 3 - HMI Diagnostic Interface
 Wokwi Simulation: (add after completion)
