@@ -7,13 +7,12 @@ Wokwi Simulation: https://wokwi.com/projects/467859014064321537
 Wokwi Simulation: https://wokwi.com/projects/468218958355116033
 
 ## Task 3 - HMI Diagnostic Interface
-Wokwi Simulation: (add after completion)
+Wokwi Simulation: https://wokwi.com/projects/468408198305177601
 
 ## Task 4 - Fault Tolerant Runtime
-Wokwi Simulation: (add after completion)
-
+Wokwi Simulation: https://wokwi.com/projects/468491244579643393
 ## Task 5 - Cloud Telemetry
-Wokwi Simulation: (add after completion)
+Wokwi Simulation: https://wokwi.com/projects/468668696867272705
 
 ## Task 6 - Dashboard
 Wokwi Simulation: (add after completion)
