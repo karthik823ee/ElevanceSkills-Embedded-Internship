@@ -230,7 +230,6 @@ void setup() {
     frozenPrev[i] = prevVoltage[i];
   }
 }
-
 void loop() {
   readCells();
   calculateStats();
