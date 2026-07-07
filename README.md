@@ -15,4 +15,4 @@ Wokwi Simulation: https://wokwi.com/projects/468491244579643393
 Wokwi Simulation: https://wokwi.com/projects/468668696867272705
 
 ## Task 6 - Dashboard
-Wokwi Simulation: (add after completion)
+https://karthik823ee.github.io/ElevanceSkills-Embedded-Internship/Task6-Dashboard/index.html
