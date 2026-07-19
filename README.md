@@ -1,5 +1,8 @@
 # ElevanceSkills Embedded Systems Internship
 
+## Integrated Project
+Wokwi Simulation: https://wokwi.com/projects/468942290233926657
+
 ## Task 1 - Battery Intelligence Engine
 Wokwi Simulation: https://wokwi.com/projects/467859014064321537
 
@@ -17,5 +20,4 @@ Wokwi Simulation: https://wokwi.com/projects/468668696867272705
 ## Task 6 - Dashboard
 https://karthik823ee.github.io/ElevanceSkills-Embedded-Internship/Task6-Dashboard/index.html
 
-## Integrated Project
-Wokwi Simulation: https://wokwi.com/projects/468942290233926657
+
